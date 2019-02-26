@@ -1,0 +1,14 @@
+@model List<noel_repository_pattern.ViewModels.TodoViewModel>
+
+@{
+    ViewData["Title"] = "Todos";
+}
+
+<ul>
+    @foreach (var item in Model){
+    
+        <li class='@(item.Done==true ? "line-through" : "")'>
+            @item.What
+        </li>
+    }
+    </ul>
