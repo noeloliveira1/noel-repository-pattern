@@ -38,13 +38,22 @@ namespace noel_repository_pattern.Controllers
         }  
   
         [HttpGet]  
+        public IActionResult CreateTodo(TodoViewModel model)  
+        {  
+            // todo: AddTodo to in-memory Database
+
+            return View("Create");  
+        }  
+
+        [HttpPost]  
         public IActionResult AddTodo(TodoViewModel model)  
         {  
             // todo: AddTodo to in-memory Database
 
             return RedirectToAction("Index", "Todos", new object{});  
         }  
-  
+
+
         [HttpPost]  
         public ActionResult EditTodo(long? id, TodoViewModel model)  
         {  
