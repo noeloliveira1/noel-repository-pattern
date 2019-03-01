@@ -4,11 +4,27 @@
     ViewData["Title"] = "Todos";
 }
 
-<ul>
-    @foreach (var item in Model){
-    
-        <li class='@(item.Done==true ? "line-through" : "")'>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>What</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td class='@(item.Done==true ? "line-through" : "")'>
+            @item.Id
+        </td>
+        <td class='@(item.Done==true ? "line-through" : "")'>
             @item.What
-        </li>
+        </td>
+        <td><a asp-area="" asp-controller="Todos" asp-action="EditTodo" asp-route-id="@item.Id">Edit</a></td>
+        <td><a asp-area="" asp-controller="Todos" asp-action="DeleteTodo" asp-route-id="@item.Id">Delete</a></td>
+    </tr>
     }
-    </ul>
+</table>
+
+
+<a asp-area="" asp-controller="Todos" asp-action="CreateTodo">Create</a>
+
+

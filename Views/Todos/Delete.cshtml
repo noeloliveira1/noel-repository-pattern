@@ -1,0 +1,32 @@
+﻿@model noel_repository_pattern.ViewModels.TodoViewModel
+<h2>Delete todo: @Model.What</h2>
+<form method="post" action="/Todos/remove">
+    <table>
+        <tr>
+            <th>Done</th>
+            <th>What</th>
+        </tr>
+        <tr>
+            <td>
+                @if (Model.Done == true)
+                {
+                    @Html.CheckBoxFor(m => m.Done, new { @checked = "checked", @disabled = "disabled"})
+                }
+                else
+                {
+                    @Html.CheckBoxFor(m => m.Done, new { @disabled = "disabled" })
+                }
+            </td>
+
+            <td>
+                @Html.TextBoxFor(m => m.What, new { @disabled = "disabled" })
+            </td>
+
+            <td><input type="hidden" name="Id" value="@Model.Id" /></td>
+        </tr>
+    </table>
+    <br />
+    Are you sure you want to delete this Todo ? <br />
+    <input type="submit" value="Delete" />
+    <a asp-controller="Todos" asp-action="Index">Back to List</a>
+</form>

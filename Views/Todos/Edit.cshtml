@@ -1,0 +1,31 @@
+﻿@model noel_repository_pattern.ViewModels.TodoViewModel
+<h2>Edit todo: @Model.What</h2>
+<form method="post" action="/Todos/update">
+    <table>
+        <tr>
+            <th>Done</th>
+            <th>What</th>
+        </tr>
+        <tr>
+            <td>
+                @if (Model.Done == true)
+                {
+                    @Html.CheckBoxFor(m => m.Done, new { @checked = "checked" })
+                }
+                else
+                {
+                    @Html.CheckBoxFor(m => m.Done)
+                }
+            </td>
+            
+            <td>
+                @Html.TextBoxFor(m => m.What)
+            </td>
+            
+            <td><input type="hidden" name="Id" value="@Model.Id" /></td>
+        </tr>
+    </table>
+    <br />
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Reset" />
+</form>
